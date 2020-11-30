@@ -5,7 +5,7 @@ export const Sidebar = () => {
   return (
     <aside>
       <h1>
-        MERN<span>Proyects</span>
+        MERN<span>Proyectos</span>
       </h1>
 
       <NuevoProyecto />

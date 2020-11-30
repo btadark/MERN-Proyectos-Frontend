@@ -12,13 +12,13 @@ export const ListadoProyectos = () => {
 
   // Revisar si los proyectos tiene contenido
   if (proyectos.length === 0) {
-    return <p>Aun no tienes ningun proyecto</p>;
+    return <p>Aun no tienes ningun proyecto, comienza creando uno :D</p>;
   }
 
   return (
     <ul className="listado-proyectos">
-      {proyectos.map((proyecto, index) => (
-        <Proyecto key={index} proyecto={proyecto} />
+      {proyectos.map((proyecto) => (
+        <Proyecto key={proyecto.id} proyecto={proyecto} />
       ))}
     </ul>
   );
