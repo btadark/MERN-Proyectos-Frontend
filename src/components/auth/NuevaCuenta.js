@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import alertaContext from "../../context/alertas/alertasContext";
+import authContext from "../../context/autenticacion/authContext";
 import { useForm } from "../../hooks/useForm";
 
-export const NuevaCuenta = () => {
+export const NuevaCuenta = ({ history }) => {
   const [usuario, inputOnChange] = useForm({
     nombre: "",
     email: "",
@@ -11,7 +12,19 @@ export const NuevaCuenta = () => {
     confirmar: "",
   });
 
+  const { mensaje, autenticado, registrarUsuario } = useContext(authContext);
   const { alerta, mostrarAlerta } = useContext(alertaContext);
+
+  // En caso del usuario se haya autenticado o registrado o sea un registro duplicado
+  useEffect(() => {
+    if (autenticado) {
+      history.push("/proyectos");
+    }
+
+    if (mensaje) {
+      mostrarAlerta(mensaje.msg, mensaje.categoria);
+    }
+  }, [mensaje, autenticado]);
 
   // Extraer de Usuario
   const { nombre, email, password, confirmar } = usuario;
@@ -44,6 +57,11 @@ export const NuevaCuenta = () => {
     }
 
     // Pasarlo al action
+    registrarUsuario({
+      nombre,
+      email,
+      password,
+    });
   };
 
   return (
