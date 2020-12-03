@@ -1,7 +1,25 @@
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import alertaContext from "../../context/alertas/alertasContext";
+import authContext from "../../context/autenticacion/authContext";
 import { useForm } from "../../hooks/useForm";
 
-export const Login = () => {
+export const Login = ({ history }) => {
+  // Extraemos los valores del context
+  const { mensaje, autenticado, iniciarSesion } = useContext(authContext);
+  const { alerta, mostrarAlerta } = useContext(alertaContext);
+
+  // En caso de que el usuario o el password no exista
+  useEffect(() => {
+    if (autenticado) {
+      history.push("/proyectos");
+    }
+
+    if (mensaje) {
+      mostrarAlerta(mensaje.msg, mensaje.categoria);
+    }
+  }, [mensaje, autenticado, history]);
+
   const [usuario, inputOnChange] = useForm({
     email: "",
     password: "",
@@ -15,12 +33,19 @@ export const Login = () => {
     e.preventDefault();
 
     // Validacion
+    if (email.trim() === "" || password.trim() === "") {
+      mostrarAlerta("Todos los campos son obligatorios", "alerta-error");
+    }
 
     // Pasarlo al action
+    iniciarSesion({ email, password });
   };
 
   return (
     <div className="form-usuario">
+      {alerta && (
+        <div className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>
+      )}
       <div className="contenedor-form sombra-dark">
         <h1>Iniciar Sesión</h1>
         <form onSubmit={onSubmit}>

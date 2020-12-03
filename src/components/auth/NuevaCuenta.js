@@ -24,7 +24,7 @@ export const NuevaCuenta = ({ history }) => {
     if (mensaje) {
       mostrarAlerta(mensaje.msg, mensaje.categoria);
     }
-  }, [mensaje, autenticado]);
+  }, [mensaje, autenticado, history]);
 
   // Extraer de Usuario
   const { nombre, email, password, confirmar } = usuario;

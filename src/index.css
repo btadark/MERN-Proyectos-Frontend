@@ -99,10 +99,8 @@ a {
   padding: 0;
   display: block;
   background-color: transparent;
+  color: white;
 }
-
-
-
 
 @media (min-width: 768px) {
   .contenedor-app {
