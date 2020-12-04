@@ -31,6 +31,8 @@ export const FormTarea = () => {
         nombre: "",
       });
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tareaseleccionada]);
 
   // Extraer el nombre del proyecto
@@ -51,9 +53,7 @@ export const FormTarea = () => {
     // Revisar si es edicion o si es nueva tarea
     if (tareaseleccionada === null) {
       // Agregar la nueva tarea al state de tareas
-      tarea.id = tarea.proyectoId = proyecto.id;
-      tarea.estado = false;
-
+      tarea.proyecto = proyecto._id;
       agregarTarea(tarea);
     } else {
       // actualizar tarea existente
@@ -62,7 +62,7 @@ export const FormTarea = () => {
     }
 
     // Obtener y filtrar las tareas del proyecto actual
-    obtenerTareas(proyecto.id);
+    obtenerTareas(proyecto._id);
 
     // Reiniciar el form
     reset();
