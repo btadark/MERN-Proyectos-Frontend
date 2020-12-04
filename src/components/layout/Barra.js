@@ -19,7 +19,7 @@ export const Barra = () => {
 
       <nav className="nav-principal">
         <button
-          className="btn btn-blank cerrar-sesion"
+          className="btn btn-blank2 cerrar-sesion"
           onClick={() => cerrarSesion()}
         >
           Cerrar Sesión
