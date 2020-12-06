@@ -37,7 +37,7 @@ const TareaState = (props) => {
         payload: resultado.data.tareas,
       });
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 

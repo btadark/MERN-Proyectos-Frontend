@@ -25,6 +25,7 @@ export const authReducer = (state, action) => {
         autenticado: true,
         usuario: action.payload,
         cargando: false,
+        mensaje: null,
       };
 
     case CERRAR_SESION:

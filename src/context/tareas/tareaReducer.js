@@ -13,7 +13,7 @@ export const TareaReducer = (state, action) => {
     case TAREAS_PROYECTO:
       return {
         ...state,
-        tareasproyecto: action.payload,
+        tareasproyecto: action.payload.reverse(),
       };
 
     case AGREGAR_TAREA:

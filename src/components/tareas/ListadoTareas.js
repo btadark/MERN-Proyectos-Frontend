@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import proyectoContext from "../../context/proyectos/proyectoContext";
 import tareaContext from "../../context/tareas/tareaContext";
 import { Tarea } from "./Tarea";
