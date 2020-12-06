@@ -7,7 +7,7 @@
 
 *.log
 .eslintcache
-
+.env
 # testing
 /coverage
 
